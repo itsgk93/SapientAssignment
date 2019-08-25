@@ -1,22 +1,13 @@
-// QuickSort Visualization
-// Daniel Shiffman
-// https://thecodingtrain.com/CodingChallenges/143-quicksort.html
-// https://editor.p5js.org/codingtrain/sketches/vic6Qzo-j
-// https://youtu.be/eqo2LxRADhU
-export default function sketch(p){
-  var values = [65, 45, 20, 10, 35, 85, 60, 90, 100,120,40,33, 5, 102];
+
+export default function sketch(values){
+return function sketchP(p){
   var w = 30;
   
   var states = [-1,-1,-1,-1,-1,-1];
   
   p.setup = function() {
-    p.createCanvas(500, 300);
+    p.createCanvas(800, 400);
     
-    //values = new Array(floor(width / w));
-    //for (let i = 0; i < values.length; i++) {
-    //  values[i] = random(height);
-    //  states[i] = -1;
-   // }
     quickSort(values, 0, values.length - 1);
   }
   
@@ -62,7 +53,7 @@ export default function sketch(p){
   
   p.draw = function() {
     p.background(' #f5f2d0');
-  
+   
     for (let i = 0; i < values.length; i++) {
       p.noStroke();
       if (states[i] === 0) {
@@ -72,10 +63,10 @@ export default function sketch(p){
       } else {
         p.fill('#32CD32');
       }
-      p.rect(i * w, p.height -( values[i]*2) - 30, w, values[i]*2);
-      p.textSize(20);
-      p.text(values, 1, p.height - 1);
-
+      p.rect(i * w + i*2 + 100, p.height -(values[i]*2) - 30, w, values[i]*2);
+      p.fill('#39388E');
+      p.textSize(22);
+      p.text(values, 100, p.height - 5);
     }
   }
   
@@ -88,4 +79,4 @@ export default function sketch(p){
   
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }}
+  }}}
